@@ -26,6 +26,7 @@ const AddTask = () => {
   return (
     <div>
       <button
+        data-testid="add-todo"
         onClick={() => setModalOpen(true)}
         className='btn btn-primary w-full'
       >
@@ -42,8 +43,9 @@ const AddTask = () => {
               type='text'
               placeholder='Type here'
               className='input input-bordered w-full'
+              data-testid="todo-text-add"
             />
-            <button type='submit' className='btn'>
+            <button type='submit' className='btn' data-testid='save-add-todo'>
               Submit
             </button>
           </div>

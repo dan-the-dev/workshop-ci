@@ -35,13 +35,14 @@ const Task: React.FC<TaskProps> = ({ task }) => {
 
   return (
     <tr key={task.id}>
-      <td className='w-full'>{task.text}</td>
+      <td className='w-full' data-testid="todo-name-label">{task.text}</td>
       <td className='flex gap-5'>
         <FiEdit
           onClick={() => setOpenModalEdit(true)}
           cursor='pointer'
           className='text-blue-500'
           size={25}
+          data-testid="edit-todo"
         />
         <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
           <form onSubmit={handleSubmitEditTodo}>
@@ -53,8 +54,9 @@ const Task: React.FC<TaskProps> = ({ task }) => {
                 type='text'
                 placeholder='Type here'
                 className='input input-bordered w-full'
+                data-testid="todo-text-edit"
               />
-              <button type='submit' className='btn'>
+              <button type='submit' className='btn' data-testid='save-edit-todo'>
                 Submit
               </button>
             </div>
@@ -65,13 +67,14 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           cursor='pointer'
           className='text-red-500'
           size={25}
+          data-testid="delete-todo"
         />
         <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
           <h3 className='text-lg'>
             Are you sure, you want to delete this task?
           </h3>
           <div className='modal-action'>
-            <button onClick={() => handleDeleteTask(task.id)} className='btn'>
+            <button onClick={() => handleDeleteTask(task.id)} className='btn' data-testid='delete-todo-confirm'>
               Yes
             </button>
           </div>
