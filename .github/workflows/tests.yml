@@ -21,6 +21,10 @@ jobs:
       run: npm run json-server &
     - name: Run lint
       run: npm run lint
+    - name: Create data.json in the data folder
+      run: |
+        mkdir -p data
+        echo '{"tasks": []}' > data/data.json
     - name: Run Jest tests
       run: npm run test
     - name: Attendere che json-server sia attivo
