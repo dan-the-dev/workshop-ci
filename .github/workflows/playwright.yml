@@ -25,6 +25,12 @@ jobs:
           curl --fail http://localhost:3001/tasks && exit 0 || sleep 2
         done
         exit 1
+    - name: Start the app in the background
+      run: |
+        npm run dev &  # Run your app in the background
+        DEV_PID=$!      # Capture the PID of the background process
+        echo "App started with PID $DEV_PID"
+      continue-on-error: true  # Allow this step to fail if the background process is killed later
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
