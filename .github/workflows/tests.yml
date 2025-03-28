@@ -17,8 +17,6 @@ jobs:
       run: npx playwright install --with-deps
     - name: Install json server globally
       run: npm install -g json-server
-    - name: Avviare json-server
-      run: npm run json-server &
     - name: Run lint
       run: npm run lint
     - name: Create data.json in the data folder
@@ -27,6 +25,8 @@ jobs:
         echo '{"tasks": []}' > data/data.json
     - name: Run Jest tests
       run: npm run test
+    - name: Avviare json-server
+      run: npm run json-server &
     - name: Attendere che json-server sia attivo
       run: |
         for i in {1..10}; do
