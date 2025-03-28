@@ -35,6 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# json server data
+data/
+
 # Playwright
 node_modules/
 /test-results/
