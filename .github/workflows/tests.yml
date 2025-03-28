@@ -19,6 +19,8 @@ jobs:
       run: npm install -g json-server
     - name: Avviare json-server
       run: npm run json-server &
+    - name: Run Jest tests
+      run: npm run test
     - name: Attendere che json-server sia attivo
       run: |
         for i in {1..10}; do
