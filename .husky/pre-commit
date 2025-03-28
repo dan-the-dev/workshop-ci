@@ -24,7 +24,7 @@ npm run test
 TEST_EXIT_CODE=$?  
 
 # Stop background processes
-echo "Freeing ports..."
+echo "Freeing ports: Dev:$DEV_PID JSON-SERVER:$JSON_SERVER_PID ..."
 kill -9 $DEV_PID
 kill -9 $JSON_SERVER_PID
 
