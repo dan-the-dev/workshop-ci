@@ -78,7 +78,15 @@ L’app sarà disponibile su <http://localhost:3000> 🚀.
 npm run test
 ```
 
-Dovresti vedere i test esistenti passare con successo. Man mano che implementerai nuove funzionalità, aggiorna e aggiungi test dove necessario.
+Dovresti vedere i test esistenti (E2E w/ Playwright) passare con successo. Man mano che implementerai nuove funzionalità, aggiorna e aggiungi test dove necessario.
+NB: per poter lanciare i test devi avere l'applicazione che gira in locale (quindi devi avere eseguito i due comandi precedenti prima di lanciare i test).
+
+In alternativa, puoi sfruttare lo script di pre-commit di husky che viene eseguito in automatico ad ogni commit; invece di eseguire i test tramite npm,
+puoi lanciare lo script bash che si assicura le porte 3000 e 3001 siano libere, lancia l'app, esegue i test e poi libera nuovamente le porte.
+
+```sh
+bash .husky/pre-commit
+```
 
 ---
 

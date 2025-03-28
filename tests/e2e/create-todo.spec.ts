@@ -1,15 +1,24 @@
 import { test, expect } from '@playwright/test';
 import fs from "node:fs/promises";
 import path from "node:path";
-import emptyData from "../testdata/empty.json";
 
-const filePath = path.join(__dirname, "..", "..", "data", "todos.json");
+const dbFilePath = path.join(__dirname, "..", "..", "data", "todos.json");
+const dbFilePathTemp = path.join(__dirname, "..", "..", "data", "todos-temp.json");
+const emptyData = { tasks: [] };
+
 test.beforeAll(async () => {
-  console.log('beforeAll', filePath, emptyData)
-  await fs.writeFile(filePath, JSON.stringify(emptyData));
+  // ensure data is empty when tests starts: copy current data in a temp file and reset data
+  await fs.copyFile(dbFilePath, dbFilePathTemp);
+  await fs.writeFile(dbFilePath, JSON.stringify(emptyData));
 });
 
-test('create/edit/delete todo', async ({ page }) => {
+test.afterAll(async () => {
+  // restore original data: copy data back from temp file and delete temp file
+  await fs.copyFile(dbFilePathTemp, dbFilePath);
+  await fs.unlink(dbFilePathTemp);
+});
+
+test('create + edit + delete todo', async ({ page }) => {
   // create
   await page.goto('http://localhost:3000/');
   await page.getByTestId('add-todo').click();
