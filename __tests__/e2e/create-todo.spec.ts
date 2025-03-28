@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const dbFilePath = path.join(__dirname, "..", "..", "data", "todos.json");
-const dbFilePathTemp = path.join(__dirname, "..", "..", "data", "todos-temp.json");
+const dbFilePath = path.join(__dirname, "..", "..", "data", "data.json");
+const dbFilePathTemp = path.join(__dirname, "..", "..", "data", "data-temp.json");
 const emptyData = { tasks: [] };
 
 test.beforeAll(async () => {

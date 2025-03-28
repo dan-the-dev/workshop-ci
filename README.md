@@ -64,7 +64,7 @@ Per prima cosa, ti serve fare setup della cartella di dati: questa cartella sar�
 Esegui il seguente comando per inizializzare il file JSON della tabella Todos (se non esiste, crea la cartella `data`):
 
 ```sh
-cp todos.json.example data/todos.json
+cp data.json.example data/data.json
 ```
 
 Ora che hai dei dati disponibili, puoi lanciare il backend tramite json-server:
@@ -83,15 +83,16 @@ L’app sarà disponibile su <http://localhost:3000> 🚀.
 
 ### **4️⃣ Eseguire i test**
 
-```sh
-npm run test
-```
+Per eseguire i test di integrazione, usa il comando: `npm run test`.
 
-Dovresti vedere i test esistenti (E2E w/ Playwright) passare con successo. Man mano che implementerai nuove funzionalità, aggiorna e aggiungi test dove necessario.
-NB: per poter lanciare i test devi avere l'applicazione che gira in locale (quindi devi avere eseguito i due comandi precedenti prima di lanciare i test).
+Per eseguire i test e2e, usa il comando: `npm run test-e2e` in modalita headless, oppure `npm run test-e2e-ui` per lanciare la UI.
+NB: per poter lanciare i test e2e devi avere l'applicazione che gira in locale (quindi devi avere eseguito i due comandi precedenti prima di lanciare i test).
 
 In alternativa, puoi sfruttare lo script di pre-commit di husky che viene eseguito in automatico ad ogni commit; invece di eseguire i test tramite npm,
 puoi lanciare lo script bash che si assicura le porte 3000 e 3001 siano libere, lancia l'app, esegue i test e poi libera nuovamente le porte.
+
+Dovresti vedere i test esistenti passare con successo. Man mano che implementerai nuove funzionalità, aggiorna e aggiungi test dove necessario.
+
 
 ```sh
 bash .husky/pre-commit
@@ -102,36 +103,6 @@ bash .husky/pre-commit
 Ora sei pronto per iniziare il workshop! 🎯 Buon coding e benvenuto in TechVibes! 🚀
 
 ---
-
-## **🛠️ Setup pipeline e rilascio
-
-La pipeline di rilascio avviene tramite GitHub Actions + Vercel.
-Su GitHub Actions vengono eseguiti i test automatici in un ambiente containerizzato, mentre su Vercel viene eseguito il deploy.
-
-NB: i due processi sono paralleli, non consequenziali - solo per semplicità per l'esercizio.
-
-### Step 1: Crea il DB di produzione
-
-Per prima cosa, ci serve un database PostgreSQL da utilizzare in "produzione". Potete utilizzare qualunque hosting gratuito, per esempio:
-
-- Neon DB
-- Supabase
-
-Una volta configurato il DB sul servizio di hosting, salvatevi la stringa di connessione al DB.
-
-### Step 2: GitHub Actions
-
-Non dovrebbe essere richiesto nessun intervento da parte vostra - al primo push dovreste vedere i test verdi nelle GitHub Actions.
-
-### Step 3: Vercel
-
-Se non lo siete già, iscrivetevi gratuitamente a Vercel usando il vostro account GitHub.
-Una volta dentro, dalla pagina "overview" cliccate su "Add New..." -> "Project".
-
-Vercel mostrerà la lista dei vostri repository GitHub, e potrete selezionarlo per configurare velocemente un deploy.
-Una volta selezionato il progetto, aprite la sezione "Environment Variables" ed inserite una variabile chiamata DATABASE_URL, come valore utilizzate la stringa di connessione al DB ottenuta allo step 1.
-
-Cliccate infine su "Deploy" per far partire il primo deploy della vostra TODO List.
 
 ### 📦 Built With
 
