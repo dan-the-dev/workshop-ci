@@ -24,9 +24,27 @@ npm run test
 TEST_EXIT_CODE=$?  
 
 # Stop background processes
-echo "Freeing ports: Dev:$DEV_PID JSON-SERVER:$JSON_SERVER_PID ..."
-kill -9 $DEV_PID
-kill -9 $JSON_SERVER_PID
+echo "Freeing ports: Dev:$DEV_PID ..."
+  
+  DEV_PORT=$(lsof -Pan -p $DEV_PID -i | awk 'NR>1 {print $9}' | cut -d':' -f2 | head -n1)
+  while lsof -ti :$DEV_PORT > /dev/null; do
+    PID=$(lsof -ti :$DEV_PORT)
+    echo "Port $DEV_PORT is in use by process $DEV_PID. Killing it..."
+    kill -9 $DEV_PID
+    sleep 1  # Wait a moment before checking again
+  done
+  echo "Dev port $DEV_PORT is now free!"
+  
+echo "Freeing ports: JSON-SERVER:$JSON_SERVER_PID ..."
+  
+  JSON_SERVER_PORT=$(lsof -Pan -p $JSON_SERVER_PID -i | awk 'NR>1 {print $9}' | cut -d':' -f2 | head -n1)
+  while lsof -ti :$JSON_SERVER_PORT > /dev/null; do
+    PID=$(lsof -ti :$JSON_SERVER_PORT)
+    echo "Port $JSON_SERVER_PORT is in use by process $JSON_SERVER_PID. Killing it..."
+    kill -9 $JSON_SERVER_PID
+    sleep 1  # Wait a moment before checking again
+  done
+  echo "JSON-SERVER port $JSON_SERVER_PORT is now free!"
 
 echo "Finished!"
 exit $TEST_EXIT_CODE
