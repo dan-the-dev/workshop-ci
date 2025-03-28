@@ -60,6 +60,15 @@ npm install
 
 ### **2️⃣ Avviare il backend tramite json-server**  
 
+Per prima cosa, ti serve fare setup della cartella di dati: questa cartella sarà il layer di persistenza usando dei file JSON.
+Esegui il seguente comando per inizializzare il file JSON della tabella Todos (se non esiste, crea la cartella `data`):
+
+```sh
+cp todos.json.example data/todos.json
+```
+
+Ora che hai dei dati disponibili, puoi lanciare il backend tramite json-server:
+
 ```sh
 npm run json-server
 ```
