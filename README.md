@@ -108,9 +108,9 @@ Ora sei pronto per iniziare il workshop! 🎯 Buon coding e benvenuto in TechVib
 
 This repository has been forked by <https://github.com/candraKriswinarto/simple-todoapp-with-next13> and then adapted for the workshop.
 
-- [nextjs 13 docs] https://beta.nextjs.org/docs
-- [json-server] https://github.com/typicode/json-server
-- [tailwindcss] https://tailwindcss.com/docs/guides/nextjs
-- [daisy ui] https://daisyui.com/components/
-- [react-icons] https://react-icons.github.io/react-icons/
-- [uuid] https://github.com/uuidjs/uuid
+- [nextjs 13 docs] <https://beta.nextjs.org/docs>
+- [json-server] <https://github.com/typicode/json-server>
+- [tailwindcss] <https://tailwindcss.com/docs/guides/nextjs>
+- [daisy ui] <https://daisyui.com/components/>
+- [react-icons] <https://react-icons.github.io/react-icons/>
+- [uuid] <https://github.com/uuidjs/uuid>
