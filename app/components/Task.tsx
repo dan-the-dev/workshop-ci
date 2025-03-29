@@ -6,6 +6,7 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
 import { deleteTodo, editTodo } from "@/api";
+import UpsertTaskModal from "./UpsertTaskModal";
 
 interface TaskProps {
   task: ITask;
@@ -44,24 +45,14 @@ const Task: React.FC<TaskProps> = ({ task }) => {
           size={25}
           data-testid="edit-todo"
         />
-        <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
-          <form onSubmit={handleSubmitEditTodo}>
-            <h3 className='font-bold text-lg'>Edit task</h3>
-            <div className='modal-action'>
-              <input
-                value={taskToEdit}
-                onChange={(e) => setTaskToEdit(e.target.value)}
-                type='text'
-                placeholder='Type here'
-                className='input input-bordered w-full'
-                data-testid="todo-text-edit"
-              />
-              <button type='submit' className='btn' data-testid='save-edit-todo'>
-                Submit
-              </button>
-            </div>
-          </form>
-        </Modal>
+        <UpsertTaskModal 
+          modalOpen={openModalEdit} 
+          setModalOpen={setOpenModalEdit}
+          handleSubmit={handleSubmitEditTodo}
+          value={taskToEdit}
+          setValue={setTaskToEdit}
+          variant='edit'
+        />
         <FiTrash2
           onClick={() => setOpenModalDeleted(true)}
           cursor='pointer'
