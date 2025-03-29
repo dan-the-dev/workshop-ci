@@ -64,6 +64,7 @@ Per prima cosa, ti serve fare setup della cartella di dati: questa cartella sar√
 Esegui il seguente comando per inizializzare il file JSON della tabella Todos (se non esiste, crea la cartella `data`):
 
 ```sh
+mkdir data
 cp data.json.example data/data.json
 ```
 
